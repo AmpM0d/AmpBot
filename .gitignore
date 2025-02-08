@@ -1,0 +1,9 @@
+/.venv
+/user-config.py
+/user-password.py
+/logs
+/apicache
+/.vscode
+__pycache__
+throttle.ctrl
+*.lwp
