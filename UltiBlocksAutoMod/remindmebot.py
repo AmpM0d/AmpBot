@@ -1,5 +1,6 @@
 import pywikibot
 import datetime
+from .wikisite import site
 import time
 import difflib
 from math import inf
@@ -12,17 +13,7 @@ def get_added_content(previous_text, current_text):
     added_lines = [line[2:] for line in diff if line.startswith('+ ')]
     return '\n'.join(added_lines)
 
-def main():
-    # Initialize the site with the custom configuration from user-config.py
-    site = pywikibot.Site()  # This uses the custom configuration defined in user-config.py
-
-    # Log in using the credentials from the config file
-    site.login()
-
-    # Get the last revision ID from the user-specific page
-    
-
-    while True:
+def iteration(site):
         last = float(pywikibot.Page(site, "User:" + site.username() + "/last_revision").text)
         # Define the recent changes iterator
         r = site.recentchanges()
@@ -74,10 +65,8 @@ def main():
             page=pywikibot.Page(site, "User:" + site.username() + "/last_revision")
             page.text=str(now)
             page.save("Bot: updating my latest revision data")
-        # Wait for 5 seconds before checking for new recent changes
-        print("Wait 5 seconds...")
-        time.sleep(5)
-        print("Done waiting.")
 
 if __name__ == "__main__":
-    main()
+    
+    while 1:
+        iteration(site)
