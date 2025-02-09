@@ -1,3 +1,4 @@
 cd /D "%~dp0"
 .venv\Scripts\activate.bat
-pwb bot.py
+start pwb sandboxbot.py
+start pwb remindmebot.py
