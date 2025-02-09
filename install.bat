@@ -1,5 +1,4 @@
 cd /D "%~dp0"
 python -m venv .venv
-.venv\Scripts\activate.bat
-pip install -r requirements.txt
-python gen_config.py
+.venv\Scripts\pip.exe install -r requirements.txt
+.venv\Scripts\python.exe gen_config.py
