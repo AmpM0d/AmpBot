@@ -1,4 +1,4 @@
-bots=[]
+bots={}
 
 from .bots.remindmebot import iteration as remindmebot
 bots["remindmebot"]={
