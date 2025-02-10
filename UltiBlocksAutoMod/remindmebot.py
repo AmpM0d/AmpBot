@@ -1,9 +1,6 @@
 import pywikibot
-import datetime
 from .wikisite import site
-import time
 import difflib
-from math import inf
 
 def get_added_content(previous_text, current_text):
     # Use difflib to find differences between the revisions
