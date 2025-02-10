@@ -56,8 +56,8 @@ def iteration(site):
                     added_content = get_added_content(previous_text, current_text)
                 if "/remindme" in added_content:
                     userpage=pywikibot.Page(site,"User talk:"+e["user"])
-                    userpage.text+="\n\n== Reminder from /{{nothing}}remindme ==\nYou asked for a notification using the /{{nothing}}remindme command. ~~~~"
-                    userpage.save("Bot: reminder")
+                    userpage.text+="\n== Reminder from /{{nothing}}remindme ==\n{{User:UltiBlocksAutoMod/Notification-v1}} ~~~~"
+                    userpage.save("Bot: reminder",minor=False)
                     print("Reminded",e["user"])
                     didanythingmeaningful=True
                 print(f"Added content to {e['title']}:\n{added_content}\n")
