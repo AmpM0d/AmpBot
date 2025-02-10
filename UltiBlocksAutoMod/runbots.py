@@ -22,7 +22,7 @@ def main(argv):
     else:
         # Otherwise run the chosen bots
         botstorun=[]
-        for item in sys.argv[1:]:
+        for item in argv[1:]:
             botstorun.append(bots[item])
     runbots(botstorun)
 
