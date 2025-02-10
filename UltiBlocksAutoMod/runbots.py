@@ -10,17 +10,17 @@ def runbots(botlist):
     while 1:
         # Run an iteration of each specified bot and then wait
         for i in botlist:
-            i(site)
+            print("Running 1 iteration of",i["prettyname"])
+            i["function"](site)
         time.sleep(5)
 
 # Main function, argument parser logic
 def main(argv):
     # If no arguments, run all bots.
     if len(argv)==1:
-        botstorun=[bots[i]["function"] for i in bots]
+        botstorun=bots.values()
     else:
         # Otherwise run the chosen bots
-        # TODO: I'm going to make a more centralized system for managing multiple bots
         botstorun=[]
         for item in sys.argv[1:]:
             botstorun.append(bots[item])
