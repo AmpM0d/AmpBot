@@ -56,7 +56,7 @@ def iteration(site):
             if now is None:
                 now=i
             # Filter to only revisions on talk pages (odd numbered namespaces)
-            if e["ns"] % 2 == 1:
+            if e["ns"] % 2 == 1 or "__NEWSECTIONLINK__" in page.text:
                 # Get the page associated with the revision
                 page = pywikibot.Page(site, e["title"])
                 # Check if this edit was page creation. If so, the whole page
