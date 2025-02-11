@@ -7,3 +7,5 @@
 __pycache__
 throttle.ctrl
 *.lwp
+/windows
+/linux
