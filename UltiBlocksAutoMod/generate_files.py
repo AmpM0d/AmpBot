@@ -25,7 +25,6 @@ for name in bots:
     win_tmp=open("templates/bot_win.bat.tpl").read()
     new=get_text(win_tmp,data["name"],data["prettyname"])
     open("windows/"+data["name"]+".bat","w").write(new)
-    data=bots["name"]
-    win_tmp=open("templates/bot_linux.sh.tpl").read()
-    new=get_text(win_tmp,data["name"],data["prettyname"])
+    linux_tmp=open("templates/bot_linux.sh.tpl").read()
+    new=get_text(linux_tmp,data["name"],data["prettyname"])
     open("linux/"+data["name"]+".sh","w").write(new)
