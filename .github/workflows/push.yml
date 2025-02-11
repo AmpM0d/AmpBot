@@ -1,14 +1,19 @@
 name: CI
 
+
 on:
   push:
     branches:    
-      - master
+      - Documentation
 
 jobs:
   build:
 
+    permissions: 
+      contents: write
+        
     runs-on: ubuntu-latest
+
 
     steps:
     - uses: actions/checkout@v1
@@ -18,7 +23,7 @@ jobs:
         docs-folder: "docs/"
     # Great extra actions to compose with:
     # Create an artifact of the html output.
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: DocumentationHTML
         path: docs/_build/html/
@@ -26,7 +31,7 @@ jobs:
     # ===============================
     - name: Commit documentation changes
       run: |
-        git clone https://github.com/ammaraskar/sphinx-action-test.git --branch gh-pages --single-branch gh-pages
+        git clone https://github.com/UltiBlocks/UltiBlocksAutoMod.git --branch gh-pages --single-branch gh-pages
         cp -r docs/_build/html/* gh-pages/
         cd gh-pages
         touch .nojekyll
