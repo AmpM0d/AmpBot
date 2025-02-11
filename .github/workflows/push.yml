@@ -6,11 +6,12 @@ on:
     branches:    
       - Documentation
 
-
 jobs:
   build:
 
-
+    permissions: 
+      contents: write
+        
     runs-on: ubuntu-latest
 
 
