@@ -55,10 +55,10 @@ def iteration(site):
             # Set the latest revision variable if it hasn't been set
             if now is None:
                 now=i
+            # Get the page associated with the revision
+            page = pywikibot.Page(site, e["title"])
             # Filter to only revisions on talk pages (odd numbered namespaces)
-            if e["ns"] % 2 == 1:
-                # Get the page associated with the revision
-                page = pywikibot.Page(site, e["title"])
+            if e["ns"] % 2 == 1 or "__NEWSECTIONLINK__" in page.text:
                 # Check if this edit was page creation. If so, the whole page
                 # is added content.
                 if e["old_revid"]==0:
