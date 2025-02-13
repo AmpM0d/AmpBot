@@ -6,7 +6,7 @@ Prerequisites
 * Git should be installed on your system
 * You should have a recent version of Python 3.
 
- * It doesn't do anything super fancy, so you can probably use a wide range of versions
+ * The project doesn't use any super fancy Python features, so you can probably use a wide range of versions
 
 * You should have knowledge of the command line on your system, as well as (ideally) Python knowledge. 
 * If you're contributing to the documentation, make sure you know ReST.
