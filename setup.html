@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Setting up UltiBlocksAutoMod &#8212; UltiBlocksAutoMod  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="UltiBlocksAutoMod documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="setting-up-ultiblocksautomod">
+<h1>Setting up UltiBlocksAutoMod<a class="headerlink" href="#setting-up-ultiblocksautomod" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Git should be installed on your system</p></li>
+<li><p>You should have a recent version of Python 3.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>It doesn’t do anything super fancy, so you can probably use a wide range of versions</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>You should have knowledge of the command line on your system, as well as (ideally) Python knowledge.</p></li>
+<li><p>If you’re contributing to the documentation, make sure you know ReST.</p></li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cloning-the-repository">
+<h2>Cloning the repository<a class="headerlink" href="#cloning-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>Cloning and entering the repository should be as simple as two commands, which work on any system.</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/UltiBlocks/UltiBlocksAutoMod</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">UltiBlocksAutoMod</span></code></div>
+</div>
+</div>
+<div class="section" id="installing-other-requirements">
+<h2>Installing other requirements<a class="headerlink" href="#installing-other-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Once you are in the project directory, you should then set up your environment by running the <code class="docutils literal notranslate"><span class="pre">install.bat</span></code> script (Windows) or <code class="docutils literal notranslate"><span class="pre">install.sh</span></code> (Linux). We do not currently have a separate script for contributing to documentation, so you currently must install the bot libraries as well. This will be changed eventually.</p>
+<p>If the setup script prompts you for usernames and passwords which you don’t have, leave them blank, as you will not use them. If you are testing or contributing to the actual source code, you should have gotten permission from an admin on the Wiki, created a Wiki account, gotten its permissions set to bot, and obtained a bot password.</p>
+</div>
+</div>
+<div class="section" id="start-contributing">
+<h1>Start contributing!<a class="headerlink" href="#start-contributing" title="Permalink to this headline">¶</a></h1>
+<p>Now, it’s time to start developing!</p>
+<div class="section" id="contributing-to-documentation">
+<h2>Contributing to documentation<a class="headerlink" href="#contributing-to-documentation" title="Permalink to this headline">¶</a></h2>
+<p>If you are contributing to the developer documentation, you will want to start the autobuild server to see your changes in real time. You’ll want to open a command line to the <code class="docutils literal notranslate"><span class="pre">.venv/Scripts</span></code> or <code class="docutils literal notranslate"><span class="pre">.venv/bin</span></code> directory (Windows or Linux respectively) and run this command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">../../docs</span> <span class="pre">../../docs/_build</span></code></p>
+<p>Leave this process running, and split screen your browser with your code editor. Open the browser to <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">UltiBlocksAutoMod</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up UltiBlocksAutoMod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#setup">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cloning-the-repository">Cloning the repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-other-requirements">Installing other requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#start-contributing">Start contributing!</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-to-documentation">Contributing to documentation</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">UltiBlocksAutoMod documentation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, 50_scratch_tabs.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/setup.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
