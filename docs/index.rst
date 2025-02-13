@@ -8,11 +8,11 @@ UltiBlocksAutoMod documentation
 
 This is the documentation for developers and contributors to UltiBlocksAutoMod, a bot running on the
 `UltiBlocks Wiki <https://ultiblocks.mirahaze.org/>`_
-. Let's hope this works.
+.
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   
+   setup
