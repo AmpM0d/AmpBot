@@ -2,7 +2,7 @@ Setting up UltiBlocksAutoMod
 ============================
 
 Prerequisites
-=============
+&&&&&&&&&&&&&
 * Git should be installed on your system
 * You should have a recent version of Python 3.
 
@@ -12,7 +12,7 @@ Prerequisites
 * If you're contributing to the documentation, make sure you know ReST.
 
 Setup
-=====
+&&&&&
 
 Cloning the repository
 ----------------------
@@ -29,7 +29,7 @@ Once you are in the project directory, you should then set up your environment b
 If the setup script prompts you for usernames and passwords which you don't have, leave them blank, as you will not use them. If you are testing or contributing to the actual source code, you should have gotten permission from an admin on the Wiki, created a Wiki account, gotten its permissions set to bot, and obtained a bot password.
 
 Start contributing!
-===================
+&&&&&&&&&&&&&&&&&&&
 Now, it's time to start developing!
 
 Contributing to documentation
