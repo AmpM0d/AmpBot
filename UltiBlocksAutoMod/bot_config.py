@@ -8,7 +8,7 @@ bots["remindmebot"]={
     "function":remindmebot
 }
 
-from .bots.remindmebot import iteration as sandboxbot
+from .bots.sandboxbot import iteration as sandboxbot
 bots["sandboxbot"]={
     "name":"sandboxbot",
     "prettyname":"Sandbox Clearing Bot",
