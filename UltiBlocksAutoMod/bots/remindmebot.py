@@ -7,8 +7,6 @@ This module will soon support setting a later time.
 # Import necessary modules
 import pywikibot
 import difflib
-from ..foreachrevision import revisions as fe_revisions
-from .. import foreachrevision as fe
 
 # Define a wrapper around difflib to see what was added.
 # This function is ChatGPT generated. I've had no problems
