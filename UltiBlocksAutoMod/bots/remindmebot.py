@@ -7,6 +7,8 @@ This module will soon support setting a later time.
 # Import necessary modules
 import pywikibot
 import difflib
+from ..foreachrevision import revisions as fe_revisions
+from .. import foreachrevision as fe
 
 # Define a wrapper around difflib to see what was added.
 # This function is ChatGPT generated. I've had no problems
@@ -24,37 +26,10 @@ def get_added_content(previous_text, current_text):
 
 # Define a function to run every iteration of the bot loop
 def iteration(site):
-        # Get the last revision the bot checked
-        # TODO: Make this and related code part of a common library
-        last = float(pywikibot.Page(site, "User:" + site.username() + "/last_revision").text)
-        # Define the recent changes generator
-        r = site.recentchanges()
-        # Set a variable to determine whether the
-        # bot has done anything worthy of updating last_revision
-        didanythingmeaningful=False
-        # Loop through recent changes
-        # Initialize an empty variable to eventually hold the latest
-        # revision we've checked (for updating last_revision if we need to)
-        now=None
         # Loop until we break (I've found this
         # less messy than specifying a while condition)
-        while 1:
-            # Get the next revision and its ID
-            e = next(r)
-            i = e["revid"]
-            # The revision ID seems to be zero for things that are not
-            # page edits or creations, so we ignore those.
-            if i==0: continue
-            # Stop if we reach the last revision we've already checked
-            if i<=last:
-                break
-            # Ignore our own edits (removing this probably
-            # won't lead to a spam loop, but it could)
-            if e["user"]==site.username():
-                continue
-            # Set the latest revision variable if it hasn't been set
-            if now is None:
-                now=i
+        for e in fe_revisions:
+            i=e["rev_id"]
             # Get the page associated with the revision
             page = pywikibot.Page(site, e["title"])
             # Filter to only revisions on talk pages (odd numbered namespaces)
@@ -90,15 +65,7 @@ def iteration(site):
                     # (probably not necessary, but is helpful whenever I'm debugging this)
                     print("Reminded",e["user"])
                     # Set the flag to update the latest revision checked, and avoid a spam loop.
-                    didanythingmeaningful=True
-        # If we made any edits...
-        if didanythingmeaningful:
-            # Get our last revision page
-            page=pywikibot.Page(site, "User:" + site.username() + "/last_revision")
-            # Edit and save it
-            page.text=str(now)
-            page.save("Bot: updating my latest revision data")
-
+                    fe.didanything=True
 # If we're being run as the main file, print an error,
 # because I don't want to update more entry points than I have to.
 if __name__ == "__main__":

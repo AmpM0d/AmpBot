@@ -9,9 +9,11 @@ import time
 def runbots(botlist):
     while 1:
         # Run an iteration of each specified bot and then wait
+        bots.foreach.preRunBots()
         for i in botlist:
             print("Running 1 iteration of",i["prettyname"])
             i["function"](site)
+        bots.foreach.postRunBots()
         time.sleep(5)
 
 # Main function, argument parser logic

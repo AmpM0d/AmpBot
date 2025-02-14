@@ -1,13 +1,11 @@
 bots={}
-from .foreachrevision import addon as foreachrevision
-
+from . import foreachrevision as foreach
 from .bots.remindmebot import iteration as remindmebot
 bots["remindmebot"]={
     "name":"remindmebot",
     "prettyname":"Reminder Bot",
     "description":"A bot that reminds users on their talk pages when they add '/remindme' to a talk page",
-    "function":remindmebot,
-    "addon":foreachrevision
+    "function":remindmebot
 }
 
 from .bots.sandboxbot import iteration as sandboxbot
