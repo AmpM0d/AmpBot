@@ -16,9 +16,6 @@ def getlistrevisions(site):
         last = float(pywikibot.Page(site, "User:" + site.username() + "/last_revision").text)
         # Define the recent changes generator
         r = site.recentchanges()
-        # Set a variable to determine whether the
-        # bot has done anything worthy of updating last_revision
-        didanythingmeaningful=False
         # Loop through recent changes
         # Initialize an empty variable to eventually hold the latest
         # revision we've checked (for updating last_revision if we need to)
@@ -47,7 +44,6 @@ def getlistrevisions(site):
 
         return edits
 
-revisions=[]
 def preRunBots(runtimevars,iterationvars):
     site=runtimevars['site']
     iterationvars['didanything']=False
@@ -59,7 +55,7 @@ def postRunBots(runtimevars,iterationvars):
         # Get our last revision page
         page=pywikibot.Page(site, "User:" + site.username() + "/last_revision")
         # Edit and save it
-        page.text=str(revisions[0]["revid"])
+        page.text=str(iterationvars['revisions'][0]["revid"])
         page.save("Bot: updating my latest revision data")
 
 # If we're being run as the main file, print an error,
