@@ -40,3 +40,6 @@ If you are contributing to the developer documentation, you will want to start t
 ``sphinx-autobuild ../../docs ../../docs/_build``
 
 Leave this process running, and split screen your browser with your code editor. Open the browser to `<http://localhost:8000>`_
+.
+
+When you make changes, simply save them, and the documentation will rebuild.

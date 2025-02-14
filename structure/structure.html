@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>UltiBlocksAutoMod structure &#8212; UltiBlocksAutoMod  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Setting up UltiBlocksAutoMod" href="../setup.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="ultiblocksautomod-structure">
+<h1>UltiBlocksAutoMod structure<a class="headerlink" href="#ultiblocksautomod-structure" title="Permalink to this headline">¶</a></h1>
+<p>UltiBlocksAutoMod’s source code is divided into a few parts: the bots themselves, the code that the bots use/share across multiple bots, the configuration that explains what bots exist, and the infrastructure that interprets the other parts.</p>
+<p>You will likely modify the bots themselves, you may modify the configuration or shared libraries if you go further in depth on editing a bot, and you will likely never modify the infrastructure. Here are some key aspects of the directory structure:</p>
+<ul class="simple">
+<li><p>All of the Python code resides under UltiBlocksAutoMod/UltiBlocksAutoMod.</p></li>
+<li><p>The bots themselves are in UltiBlocksAutoMod/UltiBlocksAutoMod/bots</p></li>
+<li><p>The configuration file is at UltiBlocksAutoMod/UltiBlocksAutoMod/bot_config.py.</p></li>
+</ul>
+<div class="section" id="the-bots">
+<h2>The bots<a class="headerlink" href="#the-bots" title="Permalink to this headline">¶</a></h2>
+<p>The bot’s code itself is fairly simple. The important parts are:</p>
+<ul class="simple">
+<li><p>You will almost certainly need to import PyWikiBot, the library that makes this bot run</p></li>
+<li><p>You might want to import difflib if you are comparing revisions (as remindmebot does)</p></li>
+<li><p>You will most likely have a few helper functions</p></li>
+<li><p>Your main bot code resides in a function called <code class="docutils literal notranslate"><span class="pre">iteration</span></code>. It does not technically have to be called that, but it should to follow with the style.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>This function takes two arguments: <code class="docutils literal notranslate"><span class="pre">runtimevars</span></code> and <code class="docutils literal notranslate"><span class="pre">iterationvars</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtimevars</span></code> is a dictionary that is preserved for the entire time the bot is running (but erased if restarted). It can be used to keep track of any data that should be remembered, but it will not be a big deal if it is forgotten.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iterationvars</span></code> is used by foreachrevision to tell bots which revisions they must check</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Your bot should have this or similar code at the bottom:</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__==&quot;__main__&quot;:</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">print(&quot;Please</span> <span class="pre">run</span> <span class="pre">this</span> <span class="pre">code</span> <span class="pre">using</span> <span class="pre">the</span> <span class="pre">appropriate</span> <span class="pre">shell</span> <span class="pre">script</span> <span class="pre">for</span> <span class="pre">your</span> <span class="pre">system&quot;)</span></code></div>
+</div>
+</div>
+<p>This will help users who try to run your code without the dedicated script.</p>
+</div>
+<div class="section" id="the-configuration-entry">
+<h2>The configuration entry<a class="headerlink" href="#the-configuration-entry" title="Permalink to this headline">¶</a></h2>
+<p>To be run, every bot must have a valid entry in the configuration file (<code class="docutils literal notranslate"><span class="pre">bot_config.py</span></code>). A valid entry is easiest to create from existing entries, but some important parts are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The machine-friendly name of the bot. Although it doesn’t have to, it should be the same as the name of the Python file.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>It should be the same as the name of the dictionary key</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prettyname</span></code>: A human friendly version of the bot’s name. This will be displayed in the console.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function</span></code>: The Python function that is run each iteration of the bot. This should be your <code class="docutils literal notranslate"><span class="pre">iteration</span></code> function, which should be imported directly above the configuration entry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_deps</span></code>: A list of Python objects that must run at some point before each iteration. For example, <code class="docutils literal notranslate"><span class="pre">foreachrevision.preRunBots</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_deps</span></code>: A list of Python objects that must run at some point after each iteration. For example, <code class="docutils literal notranslate"><span class="pre">foreachrevision.postRunBots</span></code>.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">UltiBlocksAutoMod</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setting up UltiBlocksAutoMod</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UltiBlocksAutoMod structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-bots">The bots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-configuration-entry">The configuration entry</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../setup.html" title="previous chapter">Setting up UltiBlocksAutoMod</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, 50_scratch_tabs.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/structure/structure.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
