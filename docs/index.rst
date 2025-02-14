@@ -16,3 +16,4 @@ This is the documentation for developers and contributors to UltiBlocksAutoMod, 
    :caption: Contents:
 
    setup
+   structure/structure
