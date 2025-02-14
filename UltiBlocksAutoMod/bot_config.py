@@ -6,10 +6,10 @@ bots["remindmebot"]={
     "prettyname":"Reminder Bot",
     "description":"A bot that reminds users on their talk pages when they add '/remindme' to a talk page",
     "function":remindmebot,
-    "pre_dependencies":[
+    "pre_deps":[
         foreach.preRunBots
     ],
-    "post_dependencies":[
+    "post_deps":[
         foreach.postRunBots
     ]
 }
