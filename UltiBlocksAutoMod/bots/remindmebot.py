@@ -28,8 +28,8 @@ def get_added_content(previous_text, current_text):
 def iteration(site):
         # Loop until we break (I've found this
         # less messy than specifying a while condition)
-        for e in fe_revisions:
-            i=e["rev_id"]
+        for e in fe.revisions:
+            i=e["revid"]
             # Get the page associated with the revision
             page = pywikibot.Page(site, e["title"])
             # Filter to only revisions on talk pages (odd numbered namespaces)

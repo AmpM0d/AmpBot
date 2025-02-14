@@ -2,6 +2,7 @@
 
 # Import necessary modules
 from .bot_config import bots
+from . import bot_config as bc
 from .wikisite import site
 import time
 
@@ -9,11 +10,11 @@ import time
 def runbots(botlist):
     while 1:
         # Run an iteration of each specified bot and then wait
-        bots.foreach.preRunBots()
+        bc.foreach.preRunBots(site)
         for i in botlist:
             print("Running 1 iteration of",i["prettyname"])
             i["function"](site)
-        bots.foreach.postRunBots()
+        bc.foreach.postRunBots(site)
         time.sleep(5)
 
 # Main function, argument parser logic

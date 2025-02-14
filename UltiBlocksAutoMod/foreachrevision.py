@@ -51,14 +51,14 @@ revisions=[]
 def preRunBots(site):
     global revisions,didanything
     didanything=False
-    revisions=getlistrevisions()
+    revisions=getlistrevisions(site)
 
 def postRunBots(site):
      if didanything:
             # Get our last revision page
             page=pywikibot.Page(site, "User:" + site.username() + "/last_revision")
             # Edit and save it
-            page.text=str(revisions[0]["rev_id"])
+            page.text=str(revisions[0]["revid"])
             page.save("Bot: updating my latest revision data")
 
 # If we're being run as the main file, print an error,
