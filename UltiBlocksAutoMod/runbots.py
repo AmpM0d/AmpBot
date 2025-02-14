@@ -8,13 +8,28 @@ import time
 
 # Run a select list of bots
 def runbots(botlist):
+    pre_dependencies=[]
+    post_dependencies=[]
+    for i in botlist:
+        if "pre_deps" in i:
+            for j in i["pre_deps"]:
+                if not j in pre_dependencies: 
+                    pre_dependencies.append(j)
+        if "post_deps" in i:
+            for j in i["post_deps"]:
+                if not j in post_dependencies: 
+                    post_dependencies.append(j)
+    runtimevars={"site":site}
     while 1:
+        iterationvars={}
         # Run an iteration of each specified bot and then wait
-        bc.foreach.preRunBots(site)
+        for i in pre_dependencies:
+            i(runtimevars,iterationvars)
         for i in botlist:
             print("Running 1 iteration of",i["prettyname"])
-            i["function"](site)
-        bc.foreach.postRunBots(site)
+            i["function"](runtimevars,iterationvars)
+        for i in post_dependencies:
+            i(runtimevars,iterationvars)
         time.sleep(5)
 
 # Main function, argument parser logic

@@ -19,7 +19,8 @@ def maybebot(site,rev):
 
 # Function to run one iteration of this bot
 # Originally written by ChatGPT as a basic script to edit a page once. I built from there.
-def iteration(site):
+def iteration(runtimevars,iterationvars):
+        site=runtimevars['site']
         # Define the page you want to clear after inactivity
         page = pywikibot.Page(site, "AmpMod Wiki:Sandbox")
         # Get the revisions of the page

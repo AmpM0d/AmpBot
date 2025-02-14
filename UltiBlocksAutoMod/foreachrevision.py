@@ -48,18 +48,19 @@ def getlistrevisions(site):
         return edits
 
 revisions=[]
-def preRunBots(site):
-    global revisions,didanything
-    didanything=False
-    revisions=getlistrevisions(site)
+def preRunBots(runtimevars,iterationvars):
+    site=runtimevars['site']
+    iterationvars['didanything']=False
+    iterationvars['revisions']=getlistrevisions(site)
 
-def postRunBots(site):
-     if didanything:
-            # Get our last revision page
-            page=pywikibot.Page(site, "User:" + site.username() + "/last_revision")
-            # Edit and save it
-            page.text=str(revisions[0]["revid"])
-            page.save("Bot: updating my latest revision data")
+def postRunBots(runtimevars,iterationvars):
+    site=runtimevars['site']
+    if iterationvars['didanything']:
+        # Get our last revision page
+        page=pywikibot.Page(site, "User:" + site.username() + "/last_revision")
+        # Edit and save it
+        page.text=str(revisions[0]["revid"])
+        page.save("Bot: updating my latest revision data")
 
 # If we're being run as the main file, print an error,
 # because I don't want to update more entry points than I have to.

@@ -5,7 +5,13 @@ bots["remindmebot"]={
     "name":"remindmebot",
     "prettyname":"Reminder Bot",
     "description":"A bot that reminds users on their talk pages when they add '/remindme' to a talk page",
-    "function":remindmebot
+    "function":remindmebot,
+    "pre_dependencies":[
+        foreach.preRunBots
+    ],
+    "post_dependencies":[
+        foreach.postRunBots
+    ]
 }
 
 from .bots.sandboxbot import iteration as sandboxbot

@@ -25,13 +25,13 @@ def get_added_content(previous_text, current_text):
     return '\n'.join(added_lines)
 
 # Define a function to run every iteration of the bot loop
-def iteration(site):
+def iteration(runtimevars,iterationvars):
         # Loop until we break (I've found this
         # less messy than specifying a while condition)
-        for e in fe.revisions:
+        for e in iterationvars['revisions']:
             i=e["revid"]
             # Get the page associated with the revision
-            page = pywikibot.Page(site, e["title"])
+            page = pywikibot.Page(runtimevars["site"], e["title"])
             # Filter to only revisions on talk pages (odd numbered namespaces)
             if e["ns"] % 2 == 1 or "__NEWSECTIONLINK__" in page.text:
                 # Check if this edit was page creation. If so, the whole page
@@ -56,7 +56,7 @@ def iteration(site):
                 # Regardless of how added content was determined, check for the command.
                 if "/remindme" in added_content:
                     # Get the user's talk page
-                    userpage=pywikibot.Page(site,"User talk:"+e["user"])
+                    userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
                     # Add the reminder and save the page. Make sure not to mark it as minor,
                     # because then the user won't get notified, which defeats the whole purpose.
                     userpage.text+="\n== Reminder from /{{nothing}}remindme ==\n{{User:UltiBlocksAutoMod/Notification-v1}} ~~~~"
@@ -65,7 +65,7 @@ def iteration(site):
                     # (probably not necessary, but is helpful whenever I'm debugging this)
                     print("Reminded",e["user"])
                     # Set the flag to update the latest revision checked, and avoid a spam loop.
-                    fe.didanything=True
+                    iterationvars["didanything"]=True
 # If we're being run as the main file, print an error,
 # because I don't want to update more entry points than I have to.
 if __name__ == "__main__":
