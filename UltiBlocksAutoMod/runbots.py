@@ -30,7 +30,7 @@ def runbots(botlist):
             i["function"](runtimevars,iterationvars)
         for i in post_dependencies:
             i(runtimevars,iterationvars)
-        time.sleep(5)
+        time.sleep(600)
 
 # Main function, argument parser logic
 def main(argv):
