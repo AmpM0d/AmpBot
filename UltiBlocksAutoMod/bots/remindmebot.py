@@ -52,12 +52,12 @@ def iteration(runtimevars,iterationvars):
                     # Get the added content using the diff function
                     added_content = get_added_content(previous_text, current_text)
                 # Regardless of how added content was determined, check for the command.
-                if "/remindme" in added_content:
+                if "{{UBAM command|remindme}}" in added_content:
                     # Get the user's talk page
                     userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
                     # Add the reminder and save the page. Make sure not to mark it as minor,
                     # because then the user won't get notified, which defeats the whole purpose.
-                    userpage.text+="\n== Reminder from /{{nothing}}remindme ==\n{{User:UltiBlocksAutoMod/Notification-v1}} ~~~~"
+                    userpage.text+="\n== Automated Message ==\n{{User:UltiBlocksAutoMod/Notification-v1}} ~~~~"
                     userpage.save("Bot: reminder",minor=False)
                     # Show confirmation that the user has been reminded
                     # (probably not necessary, but is helpful whenever I'm debugging this)
