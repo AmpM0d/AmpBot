@@ -57,7 +57,7 @@ def iteration(runtimevars,iterationvars):
                     userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
                     # Add the reminder and save the page. Make sure not to mark it as minor,
                     # because then the user won't get notified, which defeats the whole purpose.
-                    userpage.text+="\n== Reminder from /{{nothing}}remindme ==\n{{User:UltiBlocksAutoMod/Notification-v1}} ~~~~"
+                    userpage.text+="\n== Reminder from /{{nothing}}remindme ==\n{{User:UltiBlocksAutoMod/Notification-v1|revid="+str(i)+"|page="+e["title"]+"}} ~~~~"
                     userpage.save("Bot: reminder",minor=False)
                     # Show confirmation that the user has been reminded
                     # (probably not necessary, but is helpful whenever I'm debugging this)
