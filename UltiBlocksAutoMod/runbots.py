@@ -1,6 +1,7 @@
 """Helper script to run a select combination of bots"""
 
 # Import necessary modules
+import pywikibot
 from .bot_config import bots
 from . import bot_config as bc
 from .wikisite import site
@@ -21,6 +22,14 @@ def runbots(botlist):
                     post_dependencies.append(j)
     runtimevars={"site":site}
     while 1:
+        try:
+            page=pywikibot.Page(site,"User:"+site.user()+"/shutoff")
+            t=page.text
+            if t!="true":
+                raise Exception()
+        except:
+            print("Fatal error: the bot has been forced to stop, or the stop page could not be read.")
+            raise
         iterationvars={}
         # Run an iteration of each specified bot and then wait
         for i in pre_dependencies:
