@@ -52,7 +52,7 @@ def iteration(runtimevars,iterationvars):
                     # Get the added content using the diff function
                     added_content = get_added_content(previous_text, current_text)
                 # Regardless of how added content was determined, check for the command.
-                if "/remindme" in added_content:
+                if "{{UBAM command|remindme}}" in added_content:
                     # Get the user's talk page
                     userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
                     # Add the reminder and save the page. Make sure not to mark it as minor,
