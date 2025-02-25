@@ -40,5 +40,5 @@ To be run, every bot must have a valid entry in the configuration file (``bot_co
 
 * ``prettyname``: A human friendly version of the bot's name. This will be displayed in the console.
 * ``function``: The Python function that is run each iteration of the bot. This should be your ``iteration`` function, which should be imported directly above the configuration entry. 
-* ``pre_deps``: A list of Python objects that must run at some point before each iteration. For example, ``foreachrevision.preRunBots``.
-* ``post_deps``: A list of Python objects that must run at some point after each iteration. For example, ``foreachrevision.postRunBots``.
+* ``pre_deps``: A list of Python functions that must run at some point before each iteration. For example, ``foreachrevision.preRunBots``.
+* ``post_deps``: A list of Python functions that must run at some point after each iteration. For example, ``foreachrevision.postRunBots``.

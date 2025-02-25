@@ -81,8 +81,8 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">prettyname</span></code>: A human friendly version of the bot’s name. This will be displayed in the console.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">function</span></code>: The Python function that is run each iteration of the bot. This should be your <code class="docutils literal notranslate"><span class="pre">iteration</span></code> function, which should be imported directly above the configuration entry.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pre_deps</span></code>: A list of Python objects that must run at some point before each iteration. For example, <code class="docutils literal notranslate"><span class="pre">foreachrevision.preRunBots</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">post_deps</span></code>: A list of Python objects that must run at some point after each iteration. For example, <code class="docutils literal notranslate"><span class="pre">foreachrevision.postRunBots</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_deps</span></code>: A list of Python functions that must run at some point before each iteration. For example, <code class="docutils literal notranslate"><span class="pre">foreachrevision.preRunBots</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_deps</span></code>: A list of Python functions that must run at some point after each iteration. For example, <code class="docutils literal notranslate"><span class="pre">foreachrevision.postRunBots</span></code>.</p></li>
 </ul>
 </div>
 </div>
