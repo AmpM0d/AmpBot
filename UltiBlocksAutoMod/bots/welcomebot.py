@@ -10,13 +10,13 @@ def iteration(runtimevars,iterationvars):
         for e in iterationvars['revisions']:
             print(e)
             contribs=pywikibot.User(runtimevars["site"],e["user"]).contributions(len(iterationvars['revisions'])+1)
-            if len(contribs)<=len(iterationvars['revisions']):
+            if e["revid"] in [i[1] for i in contribs]:
                 # Get the user's talk page
                 userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
                 # Add the reminder and save the page. Make sure not to mark it as minor,
                 # because then the user won't get notified, which defeats the whole purpose.
                 userpage.text+="\n== Welcome to the AmpMod Wiki! ==\n{{User:UltiBlocksAutoMod/Welcome-v1}} ~~~~"
-                userpage.save("Bot: reminder",minor=False)
+                userpage.save("Bot: welcome",minor=False)
                 # Show confirmation that the user has been welcomed
                 # (probably not necessary, but is helpful whenever I'm debugging this)
                 print("Welcomed",e["user"])
