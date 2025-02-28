@@ -5,7 +5,6 @@ This module will soon support setting a later time.
 """
 
 # Import necessary modules
-from ast import Return
 import pywikibot
 
 wrapper=[]
