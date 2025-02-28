@@ -4,8 +4,8 @@ Used when setting up the repository, to generate the files that need to exist, b
 # Import module to securely input passwords
 import getpass
 # Prompt for bot username and bot password data
-uname=input("Username?")
-botpwduname=input("Bot password username?")
+uname=input("Username: ")
+botpwduname=input("Bot password username: ")
 botpwd=getpass.getpass("Bot password: ")
 # Generate the configuration files
 c=f"""family = 'ultiblocks'
