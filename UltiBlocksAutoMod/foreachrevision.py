@@ -23,7 +23,9 @@ def getlistrevisions(site):
         while 1:
             # Get the next revision and its ID
             e = next(r)
-            i = e["revid"]
+            try:
+                i = e["revid"]
+            except: continue
             # The revision ID seems to be zero for things that are not
             # page edits or creations, so we ignore those.
             if i==0: continue
