@@ -7,8 +7,6 @@ This module will soon support setting a later time.
 # Import necessary modules
 import pywikibot
 
-wrapper=[]
-
 # Define a function to run every iteration of the bot loop
 def getlistrevisions(site):
         # Get the last revision the bot checked
