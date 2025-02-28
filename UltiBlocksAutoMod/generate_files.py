@@ -1,16 +1,14 @@
 import copy
 import json
 import os,sys,shutil
-os.chdir(os.path.dirname(sys.argv[0])+"/..")
-if os.path.exists("windows"):
-    shutil.rmtree("windows")
-if os.path.exists("linux"):
-    shutil.rmtree("linux")
-os.mkdir("windows")
-os.mkdir("linux")
 from .bot_config import bots
 def get_text(old,name,prettyname):
     return old.replace("{{name}}",name).replace("{{prettyname}}",prettyname)
+os.chdir(os.path.dirname(sys.argv[0])+"/..")
+for directory_name in ("windows","linux",):
+  if os.path.exists(directory_name):
+    shutil.rmtree(directory_name)
+  os.mkdir(directory_name)
 launch_tpl=json.load(open("templates/launch.json.tpl"))
 basic_launch=launch_tpl["configurations"][0]
 for i in bots.values():
@@ -19,7 +17,6 @@ for i in bots.values():
     n["args"].append(i["name"])
     launch_tpl["configurations"].append(n)
 json.dump(launch_tpl,open(".vscode/launch.json","w"))
-
 for name in bots:
     data=bots[name]
     win_tmp=open("templates/bot_win.bat.tpl").read()
