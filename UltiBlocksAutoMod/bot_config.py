@@ -54,5 +54,11 @@ bots["welcomebot"]={
     "name":"welcomebot",
     "prettyname":"Welcoming Bot",
     "description":"A bot that welcomes users after their first edit",
-    "function":welcomebot
+    "function":welcomebot,
+    "pre_deps":[
+        foreach.preRunBots
+    ],
+    "post_deps":[
+        foreach.postRunBots
+    ]
 }
