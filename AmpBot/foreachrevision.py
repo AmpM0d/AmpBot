@@ -22,8 +22,10 @@ def getlistrevisions(site):
         # less messy than specifying a while condition)
         while 1:
             # Get the next revision and its ID
-            e = next(r)
-            i = e["revid"]
+            try:
+                e = next(r)
+                i = e["revid"]
+            except: continue
             # The revision ID seems to be zero for things that are not
             # page edits or creations, so we ignore those.
             if i==0: continue
@@ -32,7 +34,10 @@ def getlistrevisions(site):
                 break
             # Ignore our own edits (removing this probably
             # won't lead to a spam loop, but it could)
-            if e["user"]==site.username():
+            try:
+                if e["user"]==site.username():
+                    continue
+            except KeyError:
                 continue
             # Set the latest revision variable if it hasn't been set
             if now is None:

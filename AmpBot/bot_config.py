@@ -46,3 +46,19 @@ bots["sandboxbot"]={
     "description":"A bot that clears the global sandbox if no human has edited it for 4 hours",
     "function":sandboxbot
 }
+
+# Import the welcoming bot's iteration function
+from .bots.welcomebot import iteration as welcomebot
+# Create bot definition
+bots["welcomebot"]={
+    "name":"welcomebot",
+    "prettyname":"Welcoming Bot",
+    "description":"A bot that welcomes users after their first edit",
+    "function":welcomebot,
+    "pre_deps":[
+        foreach.preRunBots
+    ],
+    "post_deps":[
+        foreach.postRunBots
+    ]
+}
