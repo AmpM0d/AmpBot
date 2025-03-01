@@ -7,9 +7,14 @@ import pywikibot
 
 # Define a function to run every iteration of the bot loop
 def iteration(runtimevars,iterationvars):
+        cache={}
         for e in iterationvars['revisions']:
             print(e)
-            contribs=pywikibot.User(runtimevars["site"],e["user"]).contributions(len(iterationvars['revisions'])+1)
+            if e["user"] in cache:
+                 contribs=cache[e["user"]]
+            else:
+                contribs=pywikibot.User(runtimevars["site"],e["user"]).contributions(len(iterationvars['revisions'])+1)
+                cache["user"]=contribs
             if e["revid"]==list(contribs)[-1][1]:
                 # Get the user's talk page
                 userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
