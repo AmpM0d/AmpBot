@@ -9,7 +9,7 @@ import pywikibot,time
 def iteration(runtimevars,iterationvars):
         cache={}
         for e in iterationvars['revisions']:
-            print(e)
+            #print(e)
             if e["user"] in cache:
                  contribs=cache[e["user"]]
             else:
