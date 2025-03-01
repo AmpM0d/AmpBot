@@ -43,7 +43,7 @@ def iteration(runtimevars,iterationvars):
                 # but I will probably change that.
                 if datetime.datetime.now(datetime.timezone.utc)-rev.timestamp.replace(tzinfo=datetime.timezone.utc)>datetime.timedelta(hours=4):
                     # If more then 4 hours have passed since the last human edit, reset the sandbox to it's default content
-                    page.text="{{Sandbox top}}\n<!--Edit below this line, please. -->\n"
+                    page.text="{{Subst:/Top Subst}}"
                     page.save("Bot: Clearing sandbox")
                     time.sleep(5)
                 # Once we've found the last human edit, we're done.
