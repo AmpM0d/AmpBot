@@ -1,13 +1,13 @@
-UltiBlocksAutoMod structure
+AmpBot structure
 ===========================
 
-UltiBlocksAutoMod's source code is divided into a few parts: the bots themselves, the code that the bots use/share across multiple bots, the configuration that explains what bots exist, and the infrastructure that interprets the other parts.
+AmpBot's source code is divided into a few parts: the bots themselves, the code that the bots use/share across multiple bots, the configuration that explains what bots exist, and the infrastructure that interprets the other parts.
 
 You will likely modify the bots themselves, you may modify the configuration or shared libraries if you go further in depth on editing a bot, and you will likely never modify the infrastructure. Here are some key aspects of the directory structure: 
 
-* All of the Python code resides under UltiBlocksAutoMod/UltiBlocksAutoMod.
-* The bots themselves are in UltiBlocksAutoMod/UltiBlocksAutoMod/bots
-* The configuration file is at UltiBlocksAutoMod/UltiBlocksAutoMod/bot_config.py.
+* All of the Python code resides under AmpBot/AmpBot.
+* The bots themselves are in AmpBot/AmpBot/bots
+* The configuration file is at AmpBot/AmpBot/bot_config.py.
 
 
 The bots
