@@ -15,7 +15,7 @@ def iteration(runtimevars,iterationvars):
             else:
                 contribs=pywikibot.User(runtimevars["site"],e["user"]).contributions(len(iterationvars['revisions'])+1)
                 cache["user"]=contribs
-            if e["revid"]==list(contribs)[-1][1]:
+            if e["revid"]==list(contribs)[-1][1] and len(contribs)<=len(iterationvars["revisions"]):
                 # Get the user's talk page
                 userpage=pywikibot.Page(runtimevars['site'],"User talk:"+e["user"])
                 # Add the reminder and save the page. Make sure not to mark it as minor,
