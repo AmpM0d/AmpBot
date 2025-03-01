@@ -1,5 +1,5 @@
 """
-Bot definition file for UltiBlocksAutoMod
+Bot definition file for AmpBot
 This file is very formulaic. It consists of
 necessary imports and definitions for each
 bot that is to be run.

@@ -4,4 +4,4 @@ Currently it clears the sandbox if it has not been edited by a human for more th
 
 It is run by 50-scratch-tabs (GitHub) or 50_scratch_tabs (AmpMod Wiki and Scratch)
 
-The bot's user documentation will be housed on the AmpMod Wiki, and the developer/contributing documentation can be found [here](https://ampmod.js.org/UltiBlocksAutoMod).
+The bot's user documentation will be housed on the AmpMod Wiki, and the developer/contributing documentation can be found [here](https://ampmod.js.org/AmpBot).

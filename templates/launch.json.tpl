@@ -5,7 +5,7 @@
             "name": "All bots",
             "type": "debugpy",
             "request": "launch",
-            "module": "UltiBlocksAutoMod",
+            "module": "AmpBot",
             "cwd": "${workspaceFolder}",
             "args": []
         }

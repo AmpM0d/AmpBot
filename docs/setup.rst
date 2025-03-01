@@ -1,4 +1,4 @@
-Setting up UltiBlocksAutoMod
+Setting up AmpBot
 ============================
 
 Prerequisites
@@ -18,8 +18,8 @@ Cloning the repository
 ----------------------
 Cloning and entering the repository should be as simple as two commands, which work on any system.
 
-| ``git clone https://github.com/AmpM0d/UltiBlocksAutoMod``
-| ``cd UltiBlocksAutoMod``
+| ``git clone https://github.com/AmpM0d/AmpBot``
+| ``cd AmpBot``
 
 Installing other requirements
 -----------------------------

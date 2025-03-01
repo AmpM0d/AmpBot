@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'UltiBlocksAutoMod'
+project = 'AmpBot'
 copyright = '2025, 50_scratch_tabs'
 author = '50_scratch_tabs'
 
