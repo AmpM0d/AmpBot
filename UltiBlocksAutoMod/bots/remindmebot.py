@@ -7,6 +7,7 @@ This module will soon support setting a later time.
 # Import necessary modules
 import pywikibot
 import difflib
+import time
 
 # Define a wrapper around difflib to see what was added.
 # This function is ChatGPT generated. I've had no problems
@@ -62,6 +63,7 @@ def iteration(runtimevars,iterationvars):
                     # Show confirmation that the user has been reminded
                     # (probably not necessary, but is helpful whenever I'm debugging this)
                     print("Reminded",e["user"])
+                    time.sleep(5)
                     # Set the flag to update the latest revision checked, and avoid a spam loop.
                     iterationvars["didanything"]=True
 # If we're being run as the main file, print an error,

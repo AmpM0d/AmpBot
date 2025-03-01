@@ -3,7 +3,7 @@ Bot module to clear the sandbox after no humans have edited it for 4 hours
 """
 
 # Importing necessary modules
-import pywikibot,datetime
+import pywikibot,datetime,time
 
 # Function to detect if a revision was made by a bot (we probably don't need this, but whatever)
 # TODO: move this to a common library
@@ -45,6 +45,7 @@ def iteration(runtimevars,iterationvars):
                     # If more then 4 hours have passed since the last human edit, reset the sandbox to it's default content
                     page.text="{{Sandbox top}}\n<!--Edit below this line, please. -->\n"
                     page.save("Bot: Clearing sandbox")
+                    time.sleep(5)
                 # Once we've found the last human edit, we're done.
                 break
 

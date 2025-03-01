@@ -3,7 +3,7 @@ A bot module to welcome new users
 """
 
 # Import necessary modules
-import pywikibot
+import pywikibot,time
 
 # Define a function to run every iteration of the bot loop
 def iteration(runtimevars,iterationvars):
@@ -26,6 +26,7 @@ def iteration(runtimevars,iterationvars):
                 # (probably not necessary, but is helpful whenever I'm debugging this)
                 print("Welcomed",e["user"])
                 # Set the flag to update the latest revision checked, and avoid a spam loop.
+                time.sleep(5)
                 iterationvars["didanything"]=True
 # If we're being run as the main file, print an error,
 # because I don't want to update more entry points than I have to.
