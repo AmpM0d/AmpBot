@@ -34,7 +34,10 @@ def getlistrevisions(site):
                 break
             # Ignore our own edits (removing this probably
             # won't lead to a spam loop, but it could)
-            if e["user"]==site.username():
+            try:
+                if e["user"]==site.username():
+                    continue
+            except KeyError:
                 continue
             # Set the latest revision variable if it hasn't been set
             if now is None:
