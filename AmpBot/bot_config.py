@@ -62,3 +62,12 @@ bots["welcomebot"]={
         foreach.postRunBots
     ]
 }
+# Import the mass edit bot's iteration function
+from .bots.masseditregex import iteration as masseditregex
+# Create bot definition
+bots["masseditregex"]={
+    "name":"masseditregex",
+    "prettyname":"Mass edit Bot",
+    "description":"A bot that edits every page on the Wiki with a regex",
+    "function":masseditregex
+}
